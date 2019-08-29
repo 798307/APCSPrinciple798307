@@ -1,5 +1,5 @@
 //Andrew Matel
-//08/21/19
+//08/28/19
 //Vectors
 class Ball{
   constructor(x, y, dx, dy){
@@ -15,17 +15,16 @@ class Ball{
   }
   checkEdge(){
     if(this.loc.x < 0){
-      this.vel.dx =  this.vel.dy.mult(-1);
+      this.vel.dx = -this.vel.dy;
     }
     if(this.loc.x > width){
-      this.vel.dx =  this.vel.dy.mult(-1);
+      this.vel.dx = -this.vel.dx;
     }
     if(this.loc.y < 0){
-      this.vel.dy =  this.vel.dy.mult(-1);
+      this.vel.dy = -this.vel.dy;
     }
     if(this.loc.y > height){
-      this.vel.dy = this.vel.dy.mult(-1);
-    console.log(this.vel.dx)
+      this.vel.dy = -this.vel.dy;
     }
   }
   update(){
