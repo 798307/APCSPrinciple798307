@@ -17,16 +17,20 @@ class Ball{
   }
   checkEdge(){
     if(this.loc.x < 0){
-      this.vel.dx = -this.vel.dy;
+      this.vel.dx = -this.vel.dx;
+      this.acc = 0;
     }
     if(this.loc.x > width){
       this.vel.dx = -this.vel.dx;
+      this.acc = 0;
     }
     if(this.loc.y < 0){
       this.vel.dy = -this.vel.dy;
+      this.acc = 0;
     }
     if(this.loc.y > height){
       this.vel.dy = -this.vel.dy;
+      this.acc = 0;
     }
   }
   update(){
