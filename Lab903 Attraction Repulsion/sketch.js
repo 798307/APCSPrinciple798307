@@ -25,9 +25,9 @@ function draw() {
 function loadBalls(n){
   for(var i = 0; i < n; i++){
     //balls[i] = new Ball(random(width), random(height), random(-5,5), random(-5,5));
-    balls[i] = new Ball(random(width), random(height), random(-8,8), random(-8,8));
-    mainBall=new Ball(height/2,width/2,random(-1,1),random(-1,1),1) 
-  }
+    balls[i] = new Ball(random(width), random(height), random(-8,8), random(-8,8), 10, 10);
+    }
+  mainBall=new Ball(height/2,width/2, 0, 0, 400, 400, 1);
 
 }
 
@@ -35,5 +35,5 @@ function runBalls(){
   for(var i = 0; i < balls.length; i++){
     balls[i].run();
   }
-
+  mainBall.run();
 }
