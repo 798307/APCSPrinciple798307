@@ -2,12 +2,12 @@
 //09/03/19
 //Attraction Repulsion
 class Ball{
-  constructor(x, y, dx, dy, w1, w2, id){
+  constructor(x, y, dx, dy, id){
     this.loc = createVector(x,y);
     this.vel = createVector(dx,dy);
-    this.acc =createVector(random(-0.1,0.1));
+    this.acc =createVector(0,0.3);
     this.clr = color(random(255),random(255),random(255));
-    this.w = random(w1,w2);
+    this.w = random(10,10);
     this.id=id;
   }
   run(){
@@ -17,20 +17,19 @@ class Ball{
   }
   checkEdge(){
     if(this.loc.x < 0){
-      this.vel.dx = -this.vel.dx;
-      this.loc=-this.loc;
-
+      this.vel.x = -this.vel.x
     }
+
     if(this.loc.x > width){
-      this.vel.dx = -this.vel.dx;
+      this.vel.x = -this.vel.x;
     }
 
     if(this.loc.y < 0){
-      this.vel.dy = -this.vel.dy;
+      this.vel.y = -this.vel.y;
     }
 
     if(this.loc.y > height){
-      this.vel.dy = -this.vel.dy;
+      this.vel.y = -this.vel.y;
     }
 
   }
@@ -38,19 +37,26 @@ class Ball{
   update(){
     var distToMainBall;
     distToMainBall = this.loc.dist(mainBall.loc);
+    this.acc.mult(0.5);
     this.vel.add(this.acc);
     this.loc.add(this.vel);
 
     if(distToMainBall>150){
-      this.acc= -this.acc
+      this.acc=p5.Vector.sub(this.loc,mainBall.loc);
+      this.acc.normalize();
     }
     if(distToMainBall<150){
-      this.acc=-this.acc
+      this.acc=p5.Vector.sub(this.loc,mainBall.loc);
+      this.acc.normalize();
     }
+
   }
 
   render(){
     fill(this.clr);
+    if(this.id===1){
+      ellipse(this.loc.x, this.loc.y, 20, 20);
+    }
     ellipse(this.loc.x, this.loc.y, this.w, this.w);
   }
 
