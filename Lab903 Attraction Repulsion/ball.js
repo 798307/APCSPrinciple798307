@@ -5,7 +5,7 @@ class Ball{
   constructor(x, y, dx, dy, w1, w2, id){
     this.loc = createVector(x,y);
     this.vel = createVector(dx,dy);
-    this.acc =createVector(random(0,0));
+    this.acc =createVector(random(-0.1,0.1));
     this.clr = color(random(255),random(255),random(255));
     this.w = random(w1,w2);
     this.id=id;
@@ -41,6 +41,12 @@ class Ball{
     this.vel.add(this.acc);
     this.loc.add(this.vel);
 
+    if(distToMainBall>150){
+      this.acc= -this.acc
+    }
+    if(distToMainBall<150){
+      this.acc=-this.acc
+    }
   }
 
   render(){

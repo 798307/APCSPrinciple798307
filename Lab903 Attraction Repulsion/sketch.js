@@ -12,7 +12,7 @@ function setup() {
   // b2 = new Ball(random(width),random(height),random(-5,5),random(-5,5));
   // b3 = new Ball(random(width),random(height),random(-5,5),random(-5,5));
   // b4 = new Ball(random(width),random(height),random(-5,5),random(-5,5));
-  loadBalls(1000);
+  loadBalls(10);
 }
 
 //  The draw function is called @ 30 fps
@@ -25,9 +25,9 @@ function draw() {
 function loadBalls(n){
   for(var i = 0; i < n; i++){
     //balls[i] = new Ball(random(width), random(height), random(-5,5), random(-5,5));
-    balls[i] = new Ball(random(width), random(height), random(-8,8), random(-8,8), 10, 10);
+    balls[i] = new Ball(random(width), random(height), random(-2,2), random(-2,2), 10, 10);
     }
-  mainBall=new Ball(height/2,width/2, 0, 0, 400, 400, 1);
+  mainBall=new Ball(height/2,width/2, 0, 0, 40, 40, 1);
 
 }
 
