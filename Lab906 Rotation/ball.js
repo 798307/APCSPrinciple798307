@@ -35,17 +35,19 @@ class Ball{
   }
 
   update(){
-    var distToMainBall;
-    distToMainBall = this.loc.dist(mainBall.loc);
+    var distToattractor;
+    var distTorepellor
+    distToattractor = this.loc.dist(attractor.loc);
+    distTorepellor = this.loc.dist(repellor.loc);
     this.acc.mult(0.5);
     this.vel.add(this.acc);
     this.loc.add(this.vel);
 
-    if(distToMainBall>150){
+    if(distToattractor>150){
       this.acc=p5.Vector.sub(this.loc,mainBall.loc);
       this.acc.normalize();
     }
-    if(distToMainBall<150){
+    if(distTorepellor<150){
       this.acc=p5.Vector.sub(this.loc,mainBall.loc);
       this.acc.normalize();
     }
