@@ -4,10 +4,11 @@
 class Ball{
   constructor(x, y, dx, dy, id){
     this.loc = createVector(x,y);
-    this.vel = createVector(dx,dy);
+    this.vel = createVector(dx, dy);
+    this.ballx = dx
     this.acc =createVector(-0.05,0.05);
     this.clr = color(random(255),random(255),random(255));
-    this.w = random(10,10);
+    this.w = random(20,30);
     this.id = id;
   }
   run(){
@@ -18,10 +19,10 @@ class Ball{
   }
   checkEdge(){
     if(this.loc.x < 0){
-      this.vel.x = -this.vel.x
+      this.ballx = -this.ballx;
     }
     if(this.loc.x > width){
-      this.vel.x = -this.vel.x;
+      this.ballx = -this.ballx;
     }
     if(this.loc.y < 0){
       this.vel.y = -this.vel.y;
@@ -33,10 +34,9 @@ class Ball{
   }
 
   update(){
-    this.vel.y = this.vel.y + this.acc;
+    this.vel.add(this.acc);
     this.loc.y = this.loc.y + this.vel.y;
-    this.loc.x = this.loc.x; 
-
+    this.loc.x = this.loc.x + this.ballx + random(-4,4);
 
   }
 
