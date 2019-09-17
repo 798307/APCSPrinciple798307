@@ -8,22 +8,21 @@ class Ball{
     this.acc =createVector(0,0);
     this.clr = color(random(255),random(255),random(255));
     this.w = random(10,10);
-    this.id=id;
+    this.id = id
   }
   run(){
     this.checkEdge();
     this.update();
     this.render();
+    //this.isColliding();
   }
   checkEdge(){
     if(this.loc.x < 0){
       this.vel.x = -this.vel.x
     }
-
     if(this.loc.x > width){
       this.vel.x = -this.vel.x;
     }
-
     if(this.loc.y < 0){
       this.vel.y = -this.vel.y;
     }
@@ -31,34 +30,24 @@ class Ball{
     if(this.loc.y > height){
       this.vel.y = -this.vel.y;
     }
-
   }
 
   update(){
-    var distToattractor;
-    var distTorepellor
-    distToattractor = this.loc.dist(attractor.loc);
-    distTorepellor = this.loc.dist(repellor.loc);
-    this.acc.mult(0.5);
     this.vel.add(this.acc);
+    this.vel.limit(2);
     this.loc.add(this.vel);
+  }
 
-    if(distToattractor>150){
-      this.acc=p5.Vector.sub(this.loc,mainBall.loc);
-      this.acc.normalize();
+  isColliding() {
+    if((this.loc.x > paddle.loc.x) && (this.loc.x < paddle.loc.x + paddle.w) && (this.loc.y > paddle.loc.y) && (this.loc.y < paddle.loc.y + paddle.h)){
+      this.vel = -this.vel
+    }else{
+  return false;
     }
-    if(distTorepellor<150){
-      this.acc=p5.Vector.sub(this.loc,mainBall.loc);
-      this.acc.normalize();
-    }
-
   }
 
   render(){
     fill(this.clr);
-    if(this.id===1){
-      ellipse(this.loc.x, this.loc.y, 20, 20);
-    }
     ellipse(this.loc.x, this.loc.y, this.w, this.w);
   }
 
