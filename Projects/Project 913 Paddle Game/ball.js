@@ -41,7 +41,7 @@ class Ball{
   }
 
   isColliding() {
-    if(this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h){
+    if((this.loc.x > paddle.loc.x) && (this.loc.x < paddle.loc.x + paddle.w) && (this.loc.y > paddle.loc.y) && (this.loc.y < paddle.loc.y + paddle.h)){
       return true;
     }else{
   return false;

@@ -3,7 +3,7 @@
 //// Paddle
 var balls = [];
 var paddle;
-var gameState = 1;
+var gameState = 2;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -12,7 +12,7 @@ function setup() {
 }
 
 function Intro(){
-  background(255,1,1);
+  background(0,0,255);
   fill(0,0,0);
   textSize(80);
   text("Save The Balls", 130, 200);
@@ -24,27 +24,25 @@ function Intro(){
     fill(random(0,i+20), random(0,255-i), random(0, 1.5*i));
     ellipse(width/2, height/2, 200,200);
   }
-  for(var i = 50; i === 650; i = i + 200){
+  for(var i = 50; i <= 650; i = i + 200){
     if(i===50){
-      textSize(10);
+      textSize(20);
       fill(255,255,255);
-      text("Easy", i, 610);
+      text("Easy", i+25, 620);
     }else if (i===250) {
-      textSize(10);
+      textSize(20);
       fill(255,255,255);
-      text("Medium", i+50, 620);
-    }else if (i===460) {
-      textSize(10);
+      text("Medium", i+10, 620);
+    }else if (i===450) {
+      textSize(20);
       fill(255,255,255);
-      text("Hard", i+50, 620);
+      text("Hard", i+20, 620);
     }else if (i===650) {
-      textSize(10);
-      fill(255,255,255);
-      text("Instruction", i+50, 620);
+      textSize(20);
+      fill(0, 0, 0);
+      text("Instructions", i, 620);
     }
   }
-
-
 }
 
 function Game(){
@@ -85,9 +83,9 @@ function runObjects(){
 }
 
 function collision(){
-  for (var i = 0; i < balls.length; i++){
-    if(balls[i] === true){
-      balls.splice(i);
+  for (var i = balls.length-1; i >= 0; i--){
+    if(balls[i].isColliding()){
+      balls.splice(i,1);
     }
   }
 }

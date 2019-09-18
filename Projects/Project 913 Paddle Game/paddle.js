@@ -24,7 +24,7 @@ class Paddle{
   }
 
   update(){
-    var mouseLoc = createVector(mouseX - 50, mouseY);
+    var mouseLoc = createVector(mouseX - (this.w/2), mouseY);
     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
   }
 
