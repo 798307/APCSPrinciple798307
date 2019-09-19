@@ -3,10 +3,10 @@
 //Attraction Repulsion
 class Paddle{
   constructor(x,y){
-    this.loc = createVector(mouseX,mouseY);
+    this.loc = createVector(mouseX,700);
     this.acc =createVector(0,0);
     this.clr = color(random(255),random(255),random(255));
-    this.w = 100;
+    this.w = 500;
     this.h = 20;
   }
   run(){
@@ -24,7 +24,7 @@ class Paddle{
   }
 
   update(){
-    var mouseLoc = createVector(mouseX - (this.w/2), mouseY);
+    var mouseLoc = createVector(mouseX - (this.w/2),700 );
     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
   }
 

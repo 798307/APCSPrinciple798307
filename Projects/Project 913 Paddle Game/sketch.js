@@ -3,12 +3,12 @@
 //// Paddle
 var balls = [];
 var paddle;
-var gameState = 2;
+var gameState = 1;
+var score = 0;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
-  loadObjects(10)
 }
 
 function Intro(){
@@ -43,12 +43,20 @@ function Intro(){
       text("Instructions", i, 620);
     }
   }
+  if(mouseX > 50 && mouseX < 150 && mouseY > 600 && mouseY < 650){
+    loadObjects(10);
+    clear();
+    gameState = 2;
+  }
 }
 
 function Game(){
-  background(20,20,20,20);
+  background(255,255,255,20);
   runObjects();
   collision();
+  textSize(30);
+  fill(0,0,0);
+  text("Score = "+score, 40, 40 )
 }
 function EndGame(){
   background(255,255,255);
@@ -86,6 +94,8 @@ function collision(){
   for (var i = balls.length-1; i >= 0; i--){
     if(balls[i].isColliding()){
       balls.splice(i,1);
+      score = score +1;
+      paddle.w = paddle.w - 50
     }
   }
 }

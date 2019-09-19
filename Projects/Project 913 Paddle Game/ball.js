@@ -7,8 +7,8 @@ class Ball{
     this.vel = createVector(dx, dy);
     this.ballx = dx
     this.acc =createVector(-0.05,0.05);
-    this.clr = color(random(255),random(255),random(255));
-    this.w = random(20,30);
+    this.clr = color(random(0),random(0),random(0));
+    this.w = random(20,40);
     this.id = id;
   }
   run(){
@@ -36,12 +36,12 @@ class Ball{
   update(){
     this.vel.add(this.acc);
     this.loc.y = this.loc.y + this.vel.y;
-    this.loc.x = this.loc.x + this.ballx + random(-4,4);
+    this.loc.x = this.loc.x + this.ballx;
 
   }
 
   isColliding() {
-    if((this.loc.x > paddle.loc.x) && (this.loc.x < paddle.loc.x + paddle.w) && (this.loc.y > paddle.loc.y) && (this.loc.y < paddle.loc.y + paddle.h)){
+    if((this.loc.x > paddle.loc.x) && (this.loc.x < paddle.loc.x + paddle.w) && (this.loc.y >= paddle.loc.y) && (this.loc.y <= paddle.loc.y + paddle.h)){
       return true;
     }else{
   return false;
