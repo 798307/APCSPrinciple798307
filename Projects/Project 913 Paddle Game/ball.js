@@ -5,7 +5,7 @@ class Ball{
   constructor(x, y, dx, dy, id){
     this.loc = createVector(x,y);
     this.vel = createVector(dx, dy);
-    this.ballx = dx
+    this.ballx = dx;
     this.acc =createVector(-0.05,0.05);
     this.clr = color(random(0),random(0),random(0));
     this.w = random(20,40);

@@ -15,11 +15,21 @@ class Paddle{
     this.render();
   }
   checkEdge(){
-    if(((this.loc.x + this.w ) > width)){
-      this.loc.x = 700;
-    }
-    if(this.loc.x < 0){
-      this.loc.x = 1;
+    if (difficulty === 2){
+      this.loc.x = 200;
+      if(((this.loc.x + this.w ) > width)){
+        this.loc.x = 700;
+      }
+      if(this.loc.x < 0){
+        this.loc.x = 1;
+      }
+    }else{
+      if(((this.loc.x + this.w ) > width)){
+        this.loc.x = 700;
+      }
+      if(this.loc.x < 0){
+        this.loc.x = 1;
+      }
     }
   }
 

@@ -5,6 +5,9 @@ var balls = [];
 var paddle;
 var gameState = 1;
 var score = 0;
+var difficulty = 0;
+var time = 0;
+var win = 'no';
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -47,6 +50,20 @@ function Intro(){
     loadObjects(10);
     clear();
     gameState = 2;
+    difficulty = 0;
+    time = 150;
+  }else if(mouseX > 250 && mouseX < 350 && mouseY > 600 && mouseY < 650){
+    loadObjects(20);
+    clear();
+    gameState = 2;
+    difficulty = 1;
+    time = 150;
+  }else if(mouseX > 450 && mouseX < 550 && mouseY > 600 && mouseY < 650){
+    loadObjects(30);
+    clear();
+    gameState = 2;
+    difficulty = 2;
+    time = 150;
   }
 }
 
@@ -56,8 +73,26 @@ function Game(){
   collision();
   textSize(30);
   fill(0,0,0);
-  text("Score = "+score, 40, 40 )
+  text("Score = " + score, 40, 40 )
+  for(var i = 150; i > 0; i--){
+    time = i
+  }
+  if(difficulty === 0 && score === 10){
+    win = 'yes';
+  }else if(difficulty === 1 && score === 20){
+    win = 'yes';
+  }else if(difficulty === 2 && score === 30){
+    win = 'yes';
+  }
+  if(time === 0 && win === 'no'){
+      gameState = 3;
+  }
+  if(time === 0 && win === 'yes'){
+    gameState = 3;
+  }
+  console.log(time);
 }
+
 function EndGame(){
   background(255,255,255);
 }
@@ -95,7 +130,13 @@ function collision(){
     if(balls[i].isColliding()){
       balls.splice(i,1);
       score = score +1;
-      paddle.w = paddle.w - 50
+      if(difficulty === 0){
+        paddle.w = paddle.w - 50;
+      }else if(difficulty === 1){
+        paddle.w = paddle.w - 25;
+      }else if(difficulty === 2){
+        paddle.w = paddle.w - 16;
+      }
     }
   }
 }
