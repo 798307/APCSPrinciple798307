@@ -14,9 +14,9 @@ function setup() {
 function draw() {
   background(20,20,20,50);
   runObjects();
-
-
 }
+
+
 function loadObjects(n){
   for(var i = 0; i < n; i++){
     balls[i] = new Ball(random(width), random(height), random(-2,2), random(-2,2));
