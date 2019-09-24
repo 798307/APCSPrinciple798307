@@ -94,7 +94,9 @@ function Game(){
   text("Score = " + score, 40, 40 );
   for(var i = 300; i > 0; i--){
     time = i
-    text("Time = "+ int(time/30), 600, 40);
+    if (time/30 === 1 || time/30 === 2 || time/30 === 3 || time/30 === 4 || time/30 === 5 || time/30 === 6 || time/30 === 7 || time/30 === 8 || time/30 === 9 || time/30 === 10){
+      text("Time = "+ int(time/30), 600, 40);
+    }
   }
   if(difficulty === 0 && score === 10){
     gameState = 3;
