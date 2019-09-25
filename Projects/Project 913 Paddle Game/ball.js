@@ -1,5 +1,5 @@
 //Andrew Matel
-//09/03/19
+//09/13/19
 //Attraction Repulsion
 class Ball{
   constructor(x, y, dx, dy, id){
