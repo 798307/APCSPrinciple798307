@@ -4,7 +4,7 @@
 var balls = [];
 var paddle;
 var gameState = 1;
-var score = 0;
+var score = 2;
 var difficulty = 0;
 var time = 0;
 var win = 'no';
@@ -31,11 +31,14 @@ function Instructions(){
 function Time(time){
   for(var i = time; i > 0; i--){
     time = i;
-    text("Time = " + (time/30), 600, 40);
-    console.log(time);
+    if (time === 1){
+      if(gameState !== 3){
+        win = 'no';
+        gameState = 3;
+      }
+    }
   }
 }
-
 
 function Intro(){
   background(0,0,255);
@@ -48,7 +51,7 @@ function Intro(){
   }
   for(var i = 0; i < 200 ; i++){
     fill(random(0,i+20), random(0,255-i), random(0, 1.5*i));
-    ellipse(width/2, height/2, 200,200);
+    ellipse(width/2, height/2 - 25, 200,200);
   }
   for(var i = 500; i <= 710; i = i + 70){
     if(i===500){
@@ -96,41 +99,44 @@ function Intro(){
 
 function Game(){
   background(255,255,255,20);
-  Time(300);
+  //Time(300);
   runObjects();
   collision();
   textSize(30);
   fill(0,0,0);
   text("Score = " + score, 40, 40 );
-<<<<<<< HEAD
-  for(var i = 300; i > 0; i--){
-    time = i
-    if (time/30 === 1 || time/30 === 2 || time/30 === 3 || time/30 === 4 || time/30 === 5 || time/30 === 6 || time/30 === 7 || time/30 === 8 || time/30 === 9 || time/30 === 10){
-      text("Time = "+ int(time/30), 600, 40);
-    }
-  }
-  if(difficulty === 0 && score === 10){
-=======
-  if(difficulty === 0 && score === 10 && time !== 0){
->>>>>>> 3de7433c07528a530997efb82014306dd8e58459
+  if(difficulty === 0 && score === 10 && time > 1){
     gameState = 3;
     win = 'yes';
-  }else if(difficulty === 1 && score === 20 && time !== 0){
+  }else if(difficulty === 1 && score === 20 && time > 1){
     gameState = 3;
     win = 'yes';
-  }else if(difficulty === 2 && score === 30 && time !== 0){
+  }else if(difficulty === 2 && score === 30 && time > 1){
     gameState = 3;
     win = 'yes';
-  }
-  if(time <= 0 && win !== 'yes'){
-    win = 'no';
-    gameState = 3;
   }
 }
 function EndGame(){
-  background(255,255,255);
-  textSize(80);
-  text("Game Over", width/2 - 200, height/2);
+  // if(win = 'no'){
+  //   background(255,255,255);
+  //   textSize(80);
+  //   fill(0,0,0);
+  //   text("You Lose.", width/2 - 200, height/2);
+  // }
+  // if(win = 'yes'){
+  //   background(255,255,255);
+  //   textSize(80);
+  //   fill(0,0,0);
+  //   text("You Win!", width/2 - 200, height/2);
+  // }
+  // fill(0,0,0);
+  // rect(150, 710, 500, 25);
+  // fill(255,255,255);
+  // textSize(20);
+  // text("Play Again?", 325, 722);
+  // if(mouseX > 150 && mouseX < 650 && mouseY > 710 && mouseY < 735 && mouseIsPressed){
+  //   gameState = 1;
+  // }
 }
 
 //  The draw function is called @ 30 fps
@@ -154,7 +160,7 @@ function loadObjects(n){
   for(var i = 0; i < n; i++){
     balls[i] = new Ball(random(width), random(0,500), random(-2,2), random(-2,2), i);
     }
-  paddle = new Paddle(width/2, 700);
+  paddle = new Paddle(10, 700);
 }
 
 function runObjects(){
