@@ -1,6 +1,6 @@
 //Andrew Matel
 //09/13/19
-//Attraction Repulsion
+//Paddle Game
 class Paddle{
   constructor(x,y){
     this.loc = createVector(mouseX,700);
@@ -19,7 +19,7 @@ class Paddle{
       this.loc.x = 1;
     }
     if(((this.loc.x + this.w ) > width)){
-      this.loc.x = 700;
+      this.loc.x = width - (this.loc.x + this.w);
     }
     if(this.loc.x < 0){
       this.loc.x = 1;

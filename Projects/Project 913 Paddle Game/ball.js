@@ -1,6 +1,6 @@
 //Andrew Matel
 //09/13/19
-//Attraction Repulsion
+//Paddle Game
 class Ball{
   constructor(x, y, dx, dy, id){
     this.loc = createVector(x,y);
