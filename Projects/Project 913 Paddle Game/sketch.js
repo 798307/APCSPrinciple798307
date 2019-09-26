@@ -7,6 +7,7 @@ var gameState = 1;
 var score = 0;
 var difficulty = 0;
 var time = 0;
+var time = 0;
 var win = 'no';
 var btn1 = 1;
 var btn2 = 2;
@@ -33,20 +34,17 @@ function Instructions(){
  }
 }
 
-function Time(time){
-  for(var i = time; i > 0; i--){
-    time = i;
-    if (time === 1){
-      if(gameState !== 3){
-        win = 'no';
-        gameState = 3;
-      }
-      textSize(20);
-      fill(0,0,0);
-      text("Time = " + time, 700, 20);
-    }
-  }
-}
+// function Time(){
+//   for(var i = time; i > 0; i++){
+//     time = i;
+//     if (time/30 === 1){
+//       if(gameState !== 3){
+//         win = 'no';
+//         gameState = 3;
+//       }
+//     }
+//   }
+// }
 
 function Intro(){
   background(0,0,255);
@@ -55,69 +53,55 @@ function Intro(){
   text("Save The Balls", 130, 200);
   for(var i = 0; i < 200 ; i++){
     fill(random(0,255), random(0,255), random(0, 255));
-    ellipse(width/2, height/2 - 25, 200,200);
+    ellipse(width/2, height/2 - 50, 200,200);
     RunButtons();
   }
+  if(mouseX > 150 && mouseX < 650 && mouseY > 500 && mouseY < 525 && mouseIsPressed){
+    loadObjects(10);
+    clear();
+    gameState = 2;
+    difficulty = 0;
+    time = 150;
+  }else if(mouseX > 150 && mouseX < 650 && mouseY > 570 && mouseY < 595 && mouseIsPressed){
+    loadObjects(20);
+    clear();
+    gameState = 2;
+    difficulty = 1;
+    time = 150;
+  }else if(mouseX > 150 && mouseX < 650 && mouseY > 640 && mouseY < 665 && mouseIsPressed){
+    loadObjects(30);
+    clear();
+    gameState = 2;
+    difficulty = 2;
+    time = 150;
+  }else if(mouseX > 150 && mouseX < 650 && mouseY > 710 && mouseY < 735 && mouseIsPressed){
+    clear();
+    gameState = 4;
+  }
 }
-  // for(var i = 500; i <= 710; i = i + 70){
-  //   if(i===500){
-  //     textSize(20);
-  //     fill(255,255,255);
-  //     text("Easy", (width/2) - 50, i + 25);
-  //   }else if (i===570) {
-  //     textSize(20);
-  //     fill(255,255,255);
-  //     text("Medium", (width/2) - 50, i + 25);
-  //   }else if (i=== 640) {
-  //     textSize(20);
-  //     fill(255,255,255);
-  //     text("Hard",(width/2) - 50, i + 25);
-  //   }else if (i===710) {
-  //     textSize(18);
-  //     fill(0, 0, 0);
-  //     text("Instructions", (width/2) - 50, i + 25);
-  //   }
-  // }
-  // if(mouseX > 150 && mouseX < 650 && mouseY > 500 && mouseY < 525 && mouseIsPressed){
-  //   loadObjects(10);
-  //   clear();
-  //   gameState = 2;
-  //   difficulty = 0;
-  //   time = 150;
-  // }else if(mouseX > 150 && mouseX < 650 && mouseY > 570 && mouseY < 595 && mouseIsPressed){
-  //   loadObjects(20);
-  //   clear();
-  //   gameState = 2;
-  //   difficulty = 1;
-  //   time = 150;
-  // }else if(mouseX > 150 && mouseX < 650 && mouseY > 640 && mouseY < 665 && mouseIsPressed){
-  //   loadObjects(30);
-  //   clear();
-  //   gameState = 2;
-  //   difficulty = 2;
-  //   time = 150;
-  // }else if(mouseX > 150 && mouseX < 650 && mouseY > 710 && mouseY < 735 && mouseIsPressed){
-  //   clear();
-  //   gameState = 4;
-  // }
 
 function Game(){
   background(255,255,255,20);
-  Time(300);
+  for(var i = 0; i !== 0; i++){
+    time = i;
+  }
   runObjects();
   collision();
   textSize(30);
   fill(0,0,0);
   text("Score = " + score, 40, 40 );
   if(difficulty === 0 && score === 10 && time > 1){
-    gameState = 3;
     win = 'yes';
+    gameState = 3;
   }else if(difficulty === 1 && score === 20 && time > 1){
-    gameState = 3;
     win = 'yes';
+    gameState = 3;
   }else if(difficulty === 2 && score === 30 && time > 1){
-    gameState = 3;
     win = 'yes';
+    gameState = 3;
+  }else if(time === 1){
+    win = 'no';
+    gameState = 3;
   }
 }
 function EndGame(){
@@ -138,8 +122,14 @@ function EndGame(){
   fill(255,255,255);
   textSize(20);
   text("Play Again?", 325, 722);
+  textSize(50);
+  fill(0,0,0);
+  text("You took"+(time/30)+"seconds", width/2, (hieght/2)-300);
   if(mouseX > 150 && mouseX < 650 && mouseY > 710 && mouseY < 735 && mouseIsPressed){
     gameState = 1;
+    score = 0;
+    win = 'no';
+    time = 150;
   }
 }
 

@@ -19,7 +19,7 @@ class Paddle{
       this.loc.x = 1;
     }
     if(((this.loc.x + this.w ) > width)){
-      this.loc.x = width - (this.loc.x + this.w);
+      this.loc.x = width - (this.w);
     }
     if(this.loc.x < 0){
       this.loc.x = 1;
