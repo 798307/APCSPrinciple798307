@@ -26,12 +26,13 @@ function setup() {//sets up the canvas size and color, along with the buttons on
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
   makeButtons();
+  textFont('Comic Sans MS')
 }
 function Instructions(){//The game's instuctions
   background(255,255,255);
   textSize(30);
   fill(0,0,0);
-  text("Catch or block all of the balls as quickly as possible.\nDo not let the balls touch the bottom of the paddle\nor you will lose.", (width/2) - 300, height/4);
+  text("Catch or block all of the balls as quickly as\npossible. Do not let the balls touch the bottom\nof the paddle or you will lose.", (width/2) - 300, height/4);
   rect((width/2) - 50, height/2, 100, 50);
   fill(255,255,255);
   textSize(20);
@@ -46,6 +47,7 @@ function Intro(){//the beginning screen
   background(0,0,255);
   fill(0,0,0);
   textSize(80);
+  textStyle(ITALIC);
   text("Save The Balls", 130, 200);
   fill(255,255,255);
   textSize(15);
