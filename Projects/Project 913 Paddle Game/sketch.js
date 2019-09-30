@@ -137,6 +137,9 @@ function EndGame(){//final screen
     score = 0;
     win = 'no';
     time = 150;
+    for(var i = balls.length; i !== 0; i--){
+      balls.splice(i);
+    }
   }
 }
 
