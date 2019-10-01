@@ -44,7 +44,6 @@ function Instructions(){//The game's instuctions
 }
 
 function Intro(){//the beginning screen
-  background(0,0,255);
   fill(0,0,0);
   textSize(80);
   textStyle(ITALIC);
@@ -145,6 +144,7 @@ function EndGame(){//final screen
 
 //  The draw function is called @ 30 fps
 function draw() {
+
   if(gameState===1){
     Intro();
   }

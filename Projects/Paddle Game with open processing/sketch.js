@@ -6,7 +6,7 @@ var balls = [];
 //the player moved paddle
 var paddle;
 //intro, game, and end game
-var gameState = 1;
+var gameState = 0;
 //different for all difficulties
 var score = 0;
 //hard, medium, and easy
@@ -21,12 +21,22 @@ var btn2 = 2;
 var btn3 = 3;
 var btn4 = 4;
 var highscore = 10000000000000;
+var xOffset = 0;       // Perlin x-offset
+var yOffset = 0;       // Perlin y-offset
+var offsetInc = 0.006; // Perlin offset increment
+var inc = 1;           // Perin increment
+var s = 1;             // Start size of perlin ring
+var m = 1.005;         // Size multiplier
+done = 'nah';
 function setup() {//sets up the canvas size and color, along with the buttons on the beginning screen
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
   makeButtons();
-  textFont('Comic Sans MS');
+  textFont('Comic Sans MS')
+  blendMode(ADD);
+  noFill();
+  stroke(255, 64, 8, 128);
 }
 function Instructions(){//The game's instuctions
   background(255,255,255);
@@ -46,6 +56,7 @@ function Instructions(){//The game's instuctions
 function Intro(){//the beginning screen
   background(0,0,255);
   fill(0,0,0);
+  console.log("bruh");
   textSize(80);
   textStyle(ITALIC);
   text("Save The Balls", 130, 200);
@@ -142,9 +153,16 @@ function EndGame(){//final screen
     }
   }
 }
+function cooldesign(){
+  verycool();
+
+}
 
 //  The draw function is called @ 30 fps
 function draw() {
+  if(gameState===0){
+    cooldesign();
+  }
   if(gameState===1){
     Intro();
   }
@@ -203,4 +221,38 @@ function makeButtons(){//creates the buttons, similar to loadObjects
   btn2 = new Button(150,570, 25, 500, "Medium", 2 );
   btn3 = new Button(150, 640, 25, 500, "Hard", 3);
   btn4 = new Button(150, 710, 25, 500, "Instructions",4);
+}
+function verycool(){
+  translate(width * 0.5, height * 0.5);
+
+  if (s < 2000) {
+    // Create a series of perlin rings from big to small
+    for (var nTimes = 0; nTimes < 10; nTimes++) {
+
+      // Less points for smaller rings
+      nPoints = int(2 * PI * s);
+      nPoints = min(nPoints, 500);
+
+      // Create ring
+      beginShape();
+      for (var i = 0; i < nPoints; i++) {
+        var a = i / nPoints * TAU;
+        var p = p5.Vector.fromAngle(i / nPoints * TAU);
+        var n = noise(xOffset + p.x * inc, yOffset + p.y * inc) * s;
+        p.mult(n);
+        vertex(p.x, p.y);
+      }
+      endShape(CLOSE);
+
+      // Increment perlin offset for next ring
+      xOffset += offsetInc;
+      yOffset += offsetInc;
+
+      // Update size
+      s *= m;
+    }
+  } else {
+    noLoop();
+  }
+  done = 'ye';
 }
