@@ -11,9 +11,9 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-  for(var i = list.length; i >= 0; i--){
-    for(var i = 0; i<=list.length; i++){
-      if(list[i] < list[i+1]){
+  for(var i = 0; i <= list.length; i++){
+    for(var i = 0; i <= list.length; i++){
+      if(list[i] < lowest){
         lowest = list[i];
       }
     }
