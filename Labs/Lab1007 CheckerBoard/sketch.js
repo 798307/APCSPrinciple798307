@@ -21,12 +21,13 @@ function LoadSquares(){
   for(var i = 0; i < 8; i = i + 100){
     collumn = collumn + 1;
     for(var j = 0; i < 8; j = j + 100){
-      squares[j] = new Square(j, i , 100, 100);
+      squares[collumn] = new Square(j, i , 100, 100);
     }
   }
 }
 function runSquares(){
   for(var i = 0; i <= squares.length; i++){
+    console.log(squares[i]);
     squares[i].run();
   }
 }
