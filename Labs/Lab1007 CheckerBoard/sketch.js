@@ -5,6 +5,7 @@
 var squares = [];
 var row = 0;
 var collumn = -1;
+var number = 0;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -22,9 +23,12 @@ function LoadSquares(){
     collumn = collumn + 1;
     for(var j = 0; i < 8; j = j + 100){
       squares[collumn] = new Square(j, i , 100, 100);
+      number = number + 1;
     }
+    row = row + 1;
   }
 }
+
 function runSquares(){
   for(var i = 0; i <= squares.length; i++){
     console.log(squares[i]);
