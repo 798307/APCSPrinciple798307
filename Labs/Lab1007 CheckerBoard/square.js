@@ -17,7 +17,7 @@ class Square{
       }
     }
     if(rowNum % 2 ===1){
-      if(number % 2 === 0){
+      if(number % 2 === 1){
         fill(0);
       }else{
         fill(255,255,255);

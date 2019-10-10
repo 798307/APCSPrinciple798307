@@ -15,9 +15,9 @@ function setup() {
 
 //  The draw function is called @ 30 fps
 function LoadSquares() {
-  for(var n = 0; n<8; n++){
+  for(var n = 0; n < 8; n++){
     rowNum  = n;
-    for(var i = 0; i<8; i++){
+    for(var i = 0; i < 8; i++){
       number = i;
       squares[i] = new Square(100*i, 100*n);
       squares[i].run();
