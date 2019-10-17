@@ -8,37 +8,32 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
+  makelist(10,list);
 }
 
 
 //  The draw function is called @ 30 fps
-function draw() {
-  makelist(10,list);
-  for(var i = 0; i < list.length-1; i++){
-    for(var j = 0; j < list.length-1-i; j++){
-      if(list[j] > list[j+1]){
-        swap(list,j+1 ,j);
-      }
-    }
-  }
-  console.log(list);
+function draw(){
 }
+
 function swap(l, a, b){
   var temp = l[a];
   l[a] = l[b];
   l[b] = temp;
 }
-console.log(list);
 
 function makelist(n,l){
-  for(var i = 0; i !== n - 1; i++){
+  for(var i = 0; i !== n-1; i++){
     var number = int(random(0,n));
-    while(number in list){
-      if(number in l){
-        number = int(random(0,n));
+    l[i] = number;
+  }
+}
+makelist(10,list);
+  for(var i = 0; i < list.length-1; i++){
+    for(var j = 0; j < list.length-1-i; j++){
+      if(list[j] > list[j+1]){
+        swap(list,j+1,j);
       }
     }
-    l.push(number);
   }
-  console.log(l);
-}
+console.log(list);
