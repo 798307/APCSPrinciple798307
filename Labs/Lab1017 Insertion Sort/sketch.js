@@ -12,6 +12,7 @@ function setup() {
 
 
 }
+function swap();
 
 //  The draw function is called @ 30 fps
 function draw() {
@@ -19,5 +20,17 @@ function draw() {
     var number = random(10);
     list[i] = number;
    }
+  for(var i = 0; i <= list.length-1; i++){
+    for(var j = list.length; j >= 0; j--){
+      if(list[j] > list[j-1] && list[j] < list[j+1]){
+
+      }else if(list[j-1] === NaN){
+
+      }else{
+        swap();
+      }
+
+    }
+  }
 }
 console.log(list);
