@@ -1,33 +1,31 @@
-//  Your Name
-// 	Date or version number
+//  Andrew Matel
+// 	18/10/19
 //  This is a comment
 //  The setup function function is called once when your program begins
-var lowest = 100000000000000000
-var list = [7,5,2,6,3,8,4,10,1,9]
-var newlist = [];
+var list = [7,5,2,6,3,8,4,10,1,9];
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-
-
 }
 
 //  The draw function is called @ 30 fps
+
 function draw() {
 }
 
-for(var i = 0; i === list.length; i++){
-  i = 0:
-  for(var j = list.length; j > 0; j--){
-    if(list[j] < lowest){
-      lowest = list[j];
-      console.log(lowest);
+console.log(list);
+
+for (var i = 0; i < list.length - 1; i++){
+  var index = i;
+  for (var j = i + 1; j < list.length; j++){
+    if (list[j] < list[index]){
+       index = j;
     }
   }
-  list.splice(lowest);
-  newlist.push(lowest);
+  var smallerNumber = list[index];
+  list[index] = list[i];
+  list[i] = smallerNumber;
 }
 console.log(list);
-console.log(newlist);
