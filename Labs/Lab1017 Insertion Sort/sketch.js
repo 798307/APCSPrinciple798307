@@ -1,7 +1,7 @@
 //  Your Name
 // 	Date or version number
 //  This is a comment
-//  The setup function function is called once when your program begins
+//  The setup function is called once when your program begins
 var n = 10000;
 var list = [7,5,2,6,3,8,4,10,1,9];
 function setup() {
