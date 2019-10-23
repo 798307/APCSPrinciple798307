@@ -3,6 +3,7 @@
 //  This is a comment
 //  The setup function is called once when your program begins
 var n = 10000;
+
 var list = [7,5,2,6,3,8,4,10,1,9];
 function setup() {
   var cnv = createCanvas(800, 800);
@@ -26,3 +27,6 @@ for(var i = 1; i < list.length; i++){
   }
 }
 console.log(list);
+console.log("The number of swaps is " + numofswaps);
+console.log("The Number or compares is " + numofcompares);
+console.log("It took " + ((t2 - t1)/1000) + " seconds");
