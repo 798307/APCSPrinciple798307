@@ -13,12 +13,14 @@ function setup() {
 }
 
 //  The draw function is called @ 30 fps
+var test = random(0,10);//this is a test to see if random works so because it hasnt been working
+console.log(test);
 
 function draw() {
 }
 
 console.log(list);
-var t1 = millis();
+var t1 = millis();//millis won't work
 for (var i = 0; i < list.length - 1; i++){
   var index = i;
   for (var j = i + 1; j < list.length; j++){
@@ -32,7 +34,7 @@ for (var i = 0; i < list.length - 1; i++){
   list[i] = smallerNumber;
   numofswaps = numofswaps + 1;
 }
-var t2 = millis();
+var t2 = millis();//I don't know why
 console.log(list);
 console.log("The number of swaps is " + numofswaps);
 console.log("The Number or compares is " + numofcompares);
