@@ -3,9 +3,9 @@
 class Bar{
   constructor(x,y){
     this.loc = createVector(x,y);
-    this.lenth = 8;
+    this.lenth = width/numbars;
     this.h = random(0,800);
-    this.clr = color(100,0,0);
+    this.clr = color(100,0,10);
   }
 
   run(){
