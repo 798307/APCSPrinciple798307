@@ -4,7 +4,7 @@ class Bar{
   constructor(x, y, r, g, b){
     this.loc = createVector(x,y);
     this.lenth = width/numbars;
-    this.h = 400;
+    this.h = 800;
     this.clr = color(r,g,b);
     this.avg = (r + g + b)/3;
   }
