@@ -4,7 +4,6 @@
 //  The setup function function is called once when your program begins
 var barlist = [];
 var x = 0;
-var i = barlist.length-1;
 var n = 100;
 function setup() {
   var cnv = createCanvas(800, 800);
@@ -30,7 +29,6 @@ function changelocation(l,x,y){
 function draw() {
   background(0,0,0);
   runbars();
-  i = i + 1
   for(var j = 0; j < barlist.length-1; j++){
     if(barlist[j].h > barlist[j+1].h){
       swap(barlist, j, j+1);
