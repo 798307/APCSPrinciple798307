@@ -2,9 +2,9 @@
 //10/31/19
 class Snake{
   constructor(){
-    this.loc = createVector(400,400);
-    this.move = False;
-    this.clr = color(100,0,0);
+    this.loc = createVector(width/2, height/2);
+    this.move = 'false';
+    this.clr = color(0,255,0);
   }
 
   run(){
@@ -13,41 +13,30 @@ class Snake{
   }
 
   update(){
-    if(keyCode === rightArrow){
-      this.move = True;
-      while(this.move){
-        this.loc.x = this.loc.x + w;
-        if(keyCode !== rightArrow){
-          this.move = False;
-        }
-      }
+    frameRate(10);
+    if(keyCode === RIGHT_ARROW){
+      this.loc.y = this.loc.y + w;
+      direction = 1;
     }
-    if(keyCode === leftArrow){
-      this.move = True;
-      while(this.move){
-        this.loc.x = this.loc.x - w;
-        if(keyCode !== leftArrow){
-          this.move = False;
-        }
-      }
+    if(keyCode === LEFT_ARROW ){
+      this.loc.y = this.loc.y - w;
+      direction = 2;
     }
-    if(keyCode === upArrow){
-      this.move = True;
-      while(this.move){
-        this.loc.y = this.loc.y + w;
-        if(keyCode !== upArrow){
-          this.move = False;
-        }
-      }
+    if(keyCode === UP_ARROW){
+      this.loc.x = this.loc.x - w;
+      direction = 3;
     }
-    if(keyCode === downArrow){
-      this.move = True;
-      while(this.move){
-        this.loc.y = this.loc.y - w;
-        if(keyCode !== downArrow){
-          this.move = False;
-        }
-      }
+    if(keyCode === DOWN_ARROW){
+      this.loc.x = this.loc.x + w;
+      direction = 4;
+    }
+  }
+
+  checkEdges(){
+    if((this.loc.x + 10 > width) || (this.loc.x < 0) || (this.loc.y < 0) || (this.loc.y + 10 > height)){
+      fill(255,255,255);
+      textSize(80);
+      text("U suc", 100, 100);
     }
   }
 
