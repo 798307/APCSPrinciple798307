@@ -3,6 +3,7 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 var w = 10;
+var snakehead = new Snake();
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -14,6 +15,6 @@ function setup() {
 
 //  The draw function is called @ 30 fps
 function draw() {
-  Snake.run();
-  Food.run();
+  snakehead.run();
+  .run();
 }
