@@ -1,5 +1,5 @@
-//  Your Name
-// 	Date or version number
+//  Andrew Matel
+// 	10/23/19
 //  This is a comment
 //  The setup function function is called once when your program begins
 var barlist = [];
