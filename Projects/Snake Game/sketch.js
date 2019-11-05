@@ -16,7 +16,7 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-  snakehead = new Snake(0);
+  snakehead = new Snake(w,w,0);
   food = new Food();
   segments[0] = snakehead;
 }
@@ -28,8 +28,9 @@ function draw() {
     snakehead.run();
     food.run();
     if(touch){
-      segments[numofsegments] = new Snake(numofsegments);
       numofsegments = numofsegments + 1;
+      segments[numofsegments] = new Snake(segments[numofsegments-1].loc.x,segments[numofsegments-1].loc.y,numofsegments);
+      segments[numofsegments].run();
       touch = false;
       console.log(numofsegments);
       console.log(segments);
