@@ -16,7 +16,6 @@ class Food{
       this.loc.x = w * int(random(0,40));
       this.loc.y = w * int(random(0,40));
       score = score + 1;
-      console.log(score);
     }
   }
 
