@@ -23,8 +23,9 @@ class Snake{
   update(){
     frameRate(10);
     for(var i = 0; i < this.body.length; i++){
-      this.body[i].y = this.loc.y;
-      this.body[i].x = this.loc.x;
+      this.body[i].y = this.loc.x;
+      this.body[i].x = this.loc.y;
+      console.log(this.body[i].x);
     }
     if(keyCode === DOWN_ARROW){
       this.vel.x = w;
