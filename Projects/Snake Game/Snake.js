@@ -9,7 +9,7 @@ class Snake{
   }
   loadSegments(){
     for(var i = 0; i < score; i++){
-      this.body[i] = (createVector(0,0));
+      this.body.push(createVector(0,0));
     }
   }
 
