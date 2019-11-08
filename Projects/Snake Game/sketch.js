@@ -27,8 +27,7 @@ function draw() {
     food.run();
   }
   if(gamestate === 2){
-    background(255,255,255);
-    fill(0,0,0);
+    fill(255,255,255);
     textSize(80);
     text("U suc", 100, 100);
   }

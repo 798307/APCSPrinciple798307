@@ -21,7 +21,7 @@ class Snake{
   }
 
   update(){
-    frameRate(10);
+    frameRate(15);
     for(var i = 0; i < this.body.length; i++){
       if(i === 0){
         this.body[i].y = this.loc.x;
