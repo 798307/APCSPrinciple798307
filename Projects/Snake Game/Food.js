@@ -2,7 +2,7 @@
 //10/31/19
 class Food{
   constructor(){
-    this.loc = createVector(random(0,width), random(0,height));
+    this.loc = createVector((w*random(0,width/w)), (w*random(0,height/w)));
     this.clr = color(255,0,0);
   }
 

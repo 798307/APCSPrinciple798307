@@ -8,8 +8,9 @@ class Snake{
     this.vel = createVector(0,0);
   }
   loadSegments(){
-    for(var i = 0; i < score; i++){
+    for(var i = -1; i < score; i++){
       this.body.push(createVector(this.loc.y,this.loc.x));
+      console.log(score);
     }
   }
 
@@ -22,13 +23,14 @@ class Snake{
 
   update(){
     frameRate(15);
-    for(var i = 0; i < this.body.length; i++){
-      if(i === 0){
-        this.body[i].y = this.loc.x;
-        this.body[i].x = this.loc.y;
-      }else if(i > 0){
-        this.body[i].y = this.body[i-1].y;
-        this.body[i].x = this.body[i-1].x;
+    for(var i = -1; i < score; i++){
+      if(score === 0){
+        this.body[0].x = this.loc.y;
+        this.body[0].y = this.loc.x;
+      }
+      if(score > 0){
+        this.body[score].y = this.body[score-1].y;
+        this.body[score].x = this.body[score-1].x;
       }
     }
     if(keyCode === DOWN_ARROW){
@@ -48,6 +50,10 @@ class Snake{
       this.vel.x = 0;
       this.vel.y = w;
     }
+    if(score === 0){
+      this.body[0].x = this.loc.y;
+      this.body[0].y = this.loc.x;
+    }
     this.loc.add(this.vel);
   }
 
@@ -64,5 +70,4 @@ class Snake{
       rect(this.body[i].x, this.body[i].y, w, w);
     }
   }
-
 }

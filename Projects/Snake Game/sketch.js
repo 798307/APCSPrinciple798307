@@ -8,7 +8,7 @@ var food;
 var direction = 0;
 var numofsegments = 0;
 var gamestate = 1;
-var score = 0;
+var score = -1;
 
 function setup() {
   var cnv = createCanvas(800, 800);
