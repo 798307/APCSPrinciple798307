@@ -11,6 +11,7 @@ class Snake{
   loadSegments(){
     if(this.body.length < score){
       this.body.push(createVector(this.loc.y,this.loc.x));
+      console.log(this.body);
     }
   }
 
@@ -23,12 +24,6 @@ class Snake{
 
   update(){
     frameRate(15);
-    for(var i = 0; i < this.body.length; i++){
-      if(i > 0){
-        this.body[i].y = this.body[i-1].y;
-        this.body[i].x = this.body[i-1].x;
-      }
-    }
     if(keyCode === DOWN_ARROW){
       this.vel.x = w;
       this.vel.y = 0;
@@ -45,6 +40,10 @@ class Snake{
     if(keyCode === RIGHT_ARROW){
       this.vel.x = 0;
       this.vel.y = w;
+    }
+    for(var i = 1; i < this.body.length; i++){
+        this.body[i].y = this.body[i-1].y;
+        this.body[i].x = this.body[i-1].x;
     }
     if(this.body.length > 0){
       this.body[0].x = this.loc.y;
