@@ -41,7 +41,7 @@ class Snake{
       this.vel.x = 0;
       this.vel.y = w;
     }
-    for(var i = 1; i < this.body.length; i++){
+    for(var i = 1; i < this.body.length; i++){//for some reason this only loads one segment and then stops
         this.body[i].y = this.body[i-1].y;
         this.body[i].x = this.body[i-1].x;
     }
