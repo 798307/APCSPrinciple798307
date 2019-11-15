@@ -17,8 +17,8 @@ class Snake{
 
   run(){
     this.loadSegments();
-    this.render();
     this.update();
+    this.render();
     this.checkEdges();
   }
 
@@ -41,11 +41,11 @@ class Snake{
       this.vel.x = 0;
       this.vel.y = w;
     }
-    for(var i = 1; i < this.body.length; i++){//for some reason this only loads one segment and then stops
+    for(var i = this.body.length - 1; i > 0; i--){//for some reason this only loads one segment and then stops
         this.body[i].y = this.body[i-1].y;
         this.body[i].x = this.body[i-1].x;
     }
-    if(this.body.length > 0){//im not sure why this works
+    if(this.body.length > 0){
       this.body[0].x = this.loc.y;
       this.body[0].y = this.loc.x;
     }
