@@ -45,7 +45,7 @@ class Snake{
         this.body[i].y = this.body[i-1].y;
         this.body[i].x = this.body[i-1].x;
     }
-    if(this.body.length > 0){
+    if(this.body.length > 0){//im not sure why this works
       this.body[0].x = this.loc.y;
       this.body[0].y = this.loc.x;
     }

@@ -29,6 +29,6 @@ function draw() {
   if(gamestate === 2){
     fill(255,255,255);
     textSize(80);
-    text("U suc", 100, 100);
+    text("Game Over", 100, 100);
   }
 }
