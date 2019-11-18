@@ -9,8 +9,9 @@ class Snake{
   }
 
   loadSegments(){
-    if(this.body.length < score){
-      this.body.push(createVector(this.loc.y,this.loc.x));
+    if(this.body.length/2 < score){
+      this.body.push(createVector(0,0));
+      this.body.push(createVector(0, 0));
       console.log(this.body);
     }
   }
@@ -20,6 +21,7 @@ class Snake{
     this.update();
     this.render();
     this.checkEdges();
+    this.tangled();
   }
 
   update(){
@@ -63,6 +65,13 @@ class Snake{
     rect(this.loc.y, this.loc.x, w, w);
     for(var i = 0; i < this.body.length; i++){
       rect(this.body[i].x, this.body[i].y, w, w);
+    }
+  }
+  tangled(){
+    for(var i = 0; i < this.body.length; i++){
+      if(this.loc.y === this.body[i].x && this.loc.x === this.body[i].y){
+        gamestate = 2;
+      }
     }
   }
 }
