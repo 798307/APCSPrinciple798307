@@ -25,6 +25,9 @@ function draw() {
   if(gamestate === 1){
     snakehead.run();
     food.run();
+    fill(255,255,255);
+    textSize(20);
+    text("score = "+score, 700, 20);
   }
   if(gamestate === 2){
     fill(255,255,255);
