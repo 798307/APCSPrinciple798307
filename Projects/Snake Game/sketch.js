@@ -7,7 +7,7 @@ var snakehead;
 var food;
 var direction = 0;
 var numofsegments = 0;
-var gamestate = 1;
+var gamestate = 3;
 var score = 0;
 
 function setup() {
@@ -30,8 +30,23 @@ function draw() {
     text("score = "+score, 700, 20);
   }
   if(gamestate === 2){
+    background(0,0,0);
     fill(255,255,255);
     textSize(80);
-    text("Game Over", 100, 100);
+    text("Game Over", 200, 100);
+  }
+  if(gamestate === 3){
+    background(0,0,0);
+    for(var i = 0; i < 1000; i++){
+      fill(random(0,255),random(0,255),random(0,255));
+    }
+    textSize(80);
+    text("Snake Game", 170, 200);
+    textSize(50);
+    text("Press 'space' to begin", 160, 600);
+    if(keyCode === 32){
+        gamestate = 1;
+        score = 0;
+    }
   }
 }
