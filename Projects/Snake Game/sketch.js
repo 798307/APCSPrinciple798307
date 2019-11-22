@@ -10,7 +10,7 @@ var numofsegments = 0;
 var gamestate = 3;
 var score = 0;
 
-function setup() {
+function setup() {//makes canvas and sets variables to correct class objects
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
@@ -22,31 +22,38 @@ function setup() {
 //  The draw function is called @ 30 fps
 function draw() {
   background(5,5,5);
-  if(gamestate === 1){
+  if(gamestate === 1){//Plays game
     snakehead.run();
     food.run();
     fill(255,255,255);
     textSize(20);
     text("score = "+score, 700, 20);
   }
-  if(gamestate === 2){
+  if(gamestate === 2){//makes end screen
     background(0,0,0);
     fill(255,255,255);
     textSize(80);
     text("Game Over", 200, 100);
+    rect(200,300,400,100);
+    fill(0,0,0);
+    text("Start Over?", 200, 400);//button title
+    if(mouseX > 200 && mouseX < 600 && mouseY > 300 && mouseY < 400 && mouseIsPressed){//detects if button is pressed
+      gamestate = 3;
+    }
   }
-  if(gamestate === 3){
+  if(gamestate === 3){//Intro Screen
     background(0,0,0);
-    for(var i = 0; i < 1000; i++){
+    for(var i = 0; i < 1000; i++){//changes title color
       fill(random(0,255),random(0,255),random(0,255));
     }
     textSize(80);
-    text("Snake Game", 170, 200);
+    text("Snake Game", 170, 200);//title of game
     textSize(50);
     text("Press 'space' to begin", 160, 600);
-    if(keyCode === 32){
+    if(keyCode === 32){//if space is pressed, the game
         gamestate = 1;
         score = 0;
+        keyCode = 0;
     }
   }
 }
