@@ -1,6 +1,6 @@
-//  Your Name
-// 	Date or version number
-//  This is a comment
+//  Andrew Matel
+// 10/31/19
+//  Snake Game
 //  The setup function function is called once when your program begins
 var w = 20;
 var snakehead;
