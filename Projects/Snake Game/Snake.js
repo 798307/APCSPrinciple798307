@@ -9,7 +9,7 @@ class Snake{
   }
 
   loadSegments(){//loads coordinates into segments
-    if(this.body.length/2 < score){
+    if(this.body.length/4 < score){
       this.body.push(createVector(0,0));
       this.body.push(createVector(0, 0));
     }
