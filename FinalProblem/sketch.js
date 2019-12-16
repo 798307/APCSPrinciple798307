@@ -16,19 +16,19 @@ function setup() {
 }
 
 //  The draw function is called @ 30 fps
-function draw() {
+function draw() {//runs the runObjects function which begins the program
   background(0,0,0,100);
   runObjects();
 }
 
-function loadObjects(){
+function loadObjects(){//sets variables to correct classes
   ship = new Ship(10,10, random(-10,10), random(-10, 10));
   for(var i = 0; i < numPlanets; i++){
     planets[i] = new Planet(random(0,800),random(0,800), i);
   }
 }
 
-function runObjects(){
+function runObjects(){//runs all of the planets  and the single ship (plays render, update, and checkedges methods within the classes)
   ship.run();
   for(var i = 0; i < planets.length; i++){
     planets[i].run();
