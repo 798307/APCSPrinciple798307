@@ -9,6 +9,13 @@ var direction = 0;
 var numofsegments = 0;
 var gamestate = 3;
 var score = 0;
+var wallNum = 5;
+var walls = [];
+function loadWalls(n){
+  for(var i = 0; i<n; i++){
+    walls[i] = new Wall();
+  }
+}
 
 function setup() {//makes canvas and sets variables to correct class objects
   var cnv = createCanvas(800, 800);
@@ -17,6 +24,12 @@ function setup() {//makes canvas and sets variables to correct class objects
   fill(200, 30, 150);
   snakehead = new Snake(w,w);
   food = new Food();
+  loadWalls(wallNum);
+}
+function runWalls(w){
+  for(var i = 0; i<w.length; i++){
+    w[i].run();
+  }
 }
 
 //  The draw function is called @ 30 fps
@@ -28,7 +41,9 @@ function draw() {
     fill(255,255,255);
     textSize(20);
     text("score = "+score, 700, 20);
+    runWalls(walls);
   }
+
   if(gamestate === 2){//makes end screen
     background(0,0,0);
     fill(255,255,255);
@@ -50,7 +65,7 @@ function draw() {
     text("Snake Game", 170, 200);//title of game
     textSize(50);
     text("Press 'space' to begin", 160, 600);
-    if(keyCode === 32){//if space is pressed, the game
+    if(keyCode === 32){//if space is pressed, the game starts
         gamestate = 1;
         score = 0;
         keyCode = 0;
