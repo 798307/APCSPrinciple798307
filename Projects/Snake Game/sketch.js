@@ -9,7 +9,7 @@ var direction = 0;
 var numofsegments = 0;
 var gamestate = 3;
 var score = 0;
-var wallNum = 5;
+var wallNum = 1;
 var walls = [];
 function loadWalls(n){
   for(var i = 0; i<n; i++){
@@ -69,6 +69,17 @@ function draw() {
         gamestate = 1;
         score = 0;
         keyCode = 0;
+    }
+    for(var i = 0; i < walls.length; i++){
+      if((snakehead.loc.x+10 > walls[i].loc.x) && (snakehead.loc.x+10 < walls[i].loc.x + 100) && (snakehead.loc.y+10 > walls[i].loc.y) && (snakehead.loc.y+10 < walls[i].loc.y + w)){
+        gamestate = 2;
+        console.log('l');
+        snakehead.loc.x = w;
+        snakehead.loc.y = w;
+        snakehead.vel.x = 0;
+        snakehead.vel.y = 0;
+        snakehead.body = [];
+      }
     }
   }
 }
