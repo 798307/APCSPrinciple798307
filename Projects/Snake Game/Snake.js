@@ -62,6 +62,16 @@ class Snake{
       this.vel.y = 0;
       this.body = [];
     }
+    for(var i = 0; i < walls.length; i++){
+      if((this.loc.y + 10 > walls[i].loc.x) && (this.loc.y+10 < walls[i].loc.x + 100) && (this.loc.x+10 > walls[i].loc.y) && (this.loc.x+10 < walls[i].loc.y + w)){
+        gamestate = 2;
+        this.loc.x = w;
+        this.loc.y = w;
+        this.vel.x = 0;
+        this.vel.y = 0;
+        this.body = [];
+      }
+    }
   }
 
   render(){//displays segments and head
