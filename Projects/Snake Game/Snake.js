@@ -16,7 +16,7 @@ class Snake{
   }
 
   run(){//runs all methods
-    this.loadSegments();
+    // this.loadSegments();
     this.update();
     this.render();
     this.checkEdges();
@@ -24,7 +24,7 @@ class Snake{
   }
 
   update(){
-    frameRate(15); //slows down snake
+    frameRate(10); //slows down snake
     if(keyCode === DOWN_ARROW){//moves right
       this.vel.x = w;
       this.vel.y = 0;

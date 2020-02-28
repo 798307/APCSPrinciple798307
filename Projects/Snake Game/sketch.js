@@ -9,11 +9,11 @@ var direction = 0;
 var numofsegments = 0;
 var gamestate = 3;
 var score = 0;
-var wallNum = 5;
+var wallNum = 38;
 var walls = [];
 function loadWalls(n){
   for(var i = 0; i<n; i++){
-    walls[i] = new Wall();
+    walls[i] = new Wall(i+2);
   }
 }
 
